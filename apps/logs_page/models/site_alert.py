@@ -20,5 +20,9 @@ class SiteAlert(TimesModelMixin, UUIDModelMixin):
         null=True,
     )
 
+    enable = models.BooleanField(
+        default=True
+    )
+
     def __str__(self):  # noqa
         return str(self.url_site)

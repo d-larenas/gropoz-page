@@ -15,7 +15,7 @@ class SiteRegisterAdminView(admin.ModelAdmin):
 
 class SiteAlertView(admin.ModelAdmin):
     """Project model admin view."""
-    list_display = ('uuid', 'url_site', 'message_type', 'created')
+    list_display = ('uuid', 'url_site', 'message_type', 'created', 'enable')
 
 
 admin.site.register(MessageType, MessageTypeAdmin)
