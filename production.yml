@@ -29,3 +29,5 @@ services:
       - production_postgres_data_backups:/backups:z
     env_file:
       - ./.envs/.production/.postgres
+    ports:
+      - "5432:5432"
