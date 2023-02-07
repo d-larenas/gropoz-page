@@ -16,7 +16,7 @@ ALERT_TYPE = (
 class MessageType(TimesModelMixin, UUIDModelMixin):
     """model for sent alert."""
 
-    email = models.EmailField(null=False, blank=False, error_messages={
+    email = models.EmailField(null=False, blank=False, unique=True, error_messages={
         'unique': 'A user with that email already exists.'
     })
 
