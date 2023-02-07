@@ -10,7 +10,14 @@ class MessageTypeAdmin(admin.ModelAdmin):
 
 class SiteRegisterAdminView(admin.ModelAdmin):
     """Project model admin view."""
-    list_display = ('uuid', 'status_code', 'page', 'created')
+    list_display = ('uuid', 'page', 'status_code', 'created', 'is_alerted',)
+    list_display_links = ('uuid', 'page')
+    list_filter = ('page', 'status_code', 'is_alerted',)
+    search_fields = (
+        "status_code",
+        "page__url_site",
+
+    )
 
 
 class SiteAlertView(admin.ModelAdmin):

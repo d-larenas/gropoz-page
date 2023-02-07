@@ -16,5 +16,8 @@ class SiteRegister(TimesModelMixin, UUIDModelMixin):
         null=True,
     )
 
+    is_alerted = models.BooleanField(default=False, blank=False, null=False)
+
+
     def __str__(self):  # noqa
         return f"{self.status_code} - {self.page}"
