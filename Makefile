@@ -5,6 +5,7 @@ THIS_FILE := $(lastword $(MAKEFILE_LIST))
 MANAGE = python manage.py
 COMMIT = cz
 CHANGELOG = gitchangelog
+NETWORK_NAME= gropoz-network
 
 
 # target: all - Default target. Does nothing.
@@ -88,3 +89,9 @@ changelog:
 #target: isort found an import in the wrong position
 isosrt_run:
 	@isort apps --recursive;
+
+create-network:
+	@docker network create ${NETWORK_NAME}
+
+rm-network:
+	@docker network rm ${NETWORK_NAME}

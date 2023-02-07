@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 volumes:
   local_postgres_data: {}
@@ -20,6 +20,8 @@ services:
       - ./.envs/.local/.postgres
     ports:
       - "8000:8000"
+    networks:
+      - gropoz-network
     command: /start
 
   postgres:
@@ -33,5 +35,12 @@ services:
       - local_postgres_data_backups:/backups:z
     env_file:
       - ./.envs/.local/.postgres
+    networks:
+      - gropoz-network
     ports:
       - "5432:5432"
+
+networks:
+    gropoz-network:
+      external: true
+

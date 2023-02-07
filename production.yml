@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 volumes:
   production_postgres_data: {}
@@ -12,6 +12,8 @@ services:
     image: apps_production_django
     depends_on:
       - postgres
+    networks:
+      - gropoz-network
     env_file:
       - ./.envs/.production/.django
       - ./.envs/.production/.postgres
@@ -29,5 +31,12 @@ services:
       - production_postgres_data_backups:/backups:z
     env_file:
       - ./.envs/.production/.postgres
+    networks:
+      - gropoz-network
     ports:
       - "5432:5432"
+
+
+networks:
+    gropoz-network:
+      external: true
