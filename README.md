@@ -89,6 +89,8 @@ Project creation that serves as the basis for developing a REST API using Django
     POSTGRES_DB=apps  
     POSTGRES_USER=postgres  
     POSTGRES_PASSWORD=Password
+    TZ=America/Santiago
+    PGTZ=America/Santiago
 
  
  
