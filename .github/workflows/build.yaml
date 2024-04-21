@@ -24,5 +24,5 @@ jobs:
           context: .
           file: ./compose/production/django/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/home_page:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/home_page:${{ github.ref == 'refs/heads/main' && 'latest' || 'dev' }}
 
