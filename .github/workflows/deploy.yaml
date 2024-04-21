@@ -1,7 +1,5 @@
+name: Deploy
 on:
-  push:
-    branches:
-      - main
   workflow_run:
     workflows: ["Build"]
     types:
@@ -9,11 +7,13 @@ on:
 
 jobs:
   deploy_ssh:
-    # The type of runner that the job will run on
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
     - name: Deploy using ssh
       uses: appleboy/ssh-action@master
       with:
@@ -24,7 +24,6 @@ jobs:
         script: |
           cd home_page
           docker-compose -f production.yml pull
-          docker compose -f production.yml build
-          docker compose -f production.yml down
-          docker compose -f production.yml up -d
-
+          docker-compose -f production.yml build
+          docker-compose -f production.yml down
+          docker-compose -f production.yml up -d
