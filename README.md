@@ -1,5 +1,5 @@
 
-#  Django rest framework project base  :sparkles:  
+#  Proyecto personal  :sparkles:  
   
 Project creation that serves as the basis for developing a REST API using Django.  
 
