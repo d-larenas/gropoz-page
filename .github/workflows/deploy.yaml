@@ -21,7 +21,8 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd home_page
-          docker compose -f production.yml down
           docker-compose -f production.yml pull
-          docker compose -f production.yml up --build -d
+          docker compose -f production.yml build
+          docker compose -f production.yml down
+          docker compose -f production.yml up -d
 
